@@ -1,0 +1,200 @@
+﻿<Window x:Class="CCXRealmClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CCXRealmClient"
+        mc:Ignorable="d"
+        Title="CCXRealmClient" Height="600" Width="350" BorderBrush="Black" AllowsTransparency="True" WindowStyle="None" Background="#00000000" Loaded="Window_Loaded" Icon="ICON64.ico" Topmost="True">
+    <Grid x:Name="Window" Width="350" Height="600">
+        <Grid x:Name="Content">
+            <Grid x:Name="Window_Background">
+                <Rectangle Fill="#E5000000" RadiusX="20" RadiusY="20"/>
+            </Grid>
+            <Grid x:Name="Window_2">
+                <Grid x:Name="WindowTopBorder" Height="30" VerticalAlignment="Top" MouseDown="WindowTopBorder_MouseDown" Background="#00000000">
+                    <StackPanel x:Name="StackPanel_ControlButtons" HorizontalAlignment="Right" Orientation="Horizontal">
+                        <!--    <Button x:Name="MinimizeButton" Margin="0,5,0,0" Background="Black" Content="-" Foreground="Red" BorderBrush="{x:Null}" Width="40" Height="20" Click="MinimizeButton_Click"></Button>
+                        <Button x:Name="CloseButton" Margin="0,5,20,0" Background="Black" Content="X" Foreground="Red" BorderBrush="{x:Null}" Width="40" Height="20" Click="CloseButton_Click"></Button>
+                    -->
+                        <Rectangle x:Name="MinimizeRect" Fill="White" Width="16" Height="16" RadiusX="10" RadiusY="10" Margin="0,0,5,0" MouseDown="MinimizeRect_MouseDown"/>
+                        <Rectangle x:Name="CloseRect" Fill="#FF9600FF" Width="16" Height="16" RadiusX="10" RadiusY="10" Margin="0,0,15,0" MouseDown="CloseRect_MouseDown"/>
+
+                    </StackPanel>
+                    <StackPanel x:Name="Stackpanel_Titelbar" HorizontalAlignment="Left" Margin="0" Height="30" Orientation="Horizontal">
+                        <Label Content="REALM Client" Foreground="White" Margin="10,0,0,0" Background="{x:Null}" FontWeight="Bold"/>
+                        <Label Content="v0.1.1 BETA" Foreground="White" Margin="-5,0,0,0" Background="{x:Null}" FontWeight="Bold"/>
+                        <Label Content="by CXCubeHD" Foreground="White" Margin="-5,0,0,0" Background="{x:Null}" FontWeight="Bold"/>
+                    </StackPanel>
+                </Grid>
+                <Grid x:Name="UI" Margin="-1,30,0,0">
+                    <Grid>
+                        <StackPanel Height="50" Orientation="Horizontal" VerticalAlignment="Top" Margin="10,0,0,0">
+                            <Label Background="{x:Null}" Foreground="#FF9600FF" Content="Game Status:" Margin="0"/>
+                            <Label x:Name="label_gamestatus" Background="{x:Null}" Foreground="Red" Margin="5,0,0,0" RenderTransformOrigin="0.833,0.743" Content="Not Found"/>
+                        </StackPanel>
+                    </Grid>
+                    <StackPanel Height="50" VerticalAlignment="Top" Orientation="Horizontal" Margin="10,25,10,0" d:IsLocked="True">
+                        <Label Background="{x:Null}" Foreground="#FF9600FF" Margin="0" RenderTransformOrigin="0.833,0.743" Height="50" FontWeight="Bold" Content="Position (X,Y,Z)"/>
+                        <Label x:Name="label_positionX" Background="{x:Null}" Foreground="#FF0096FF" Margin="0" RenderTransformOrigin="0.833,0.743" Content="X" FontWeight="Bold" Width="80" HorizontalAlignment="Left"/>
+                        <Label x:Name="label_positionY" Background="{x:Null}" Foreground="#FF0096FF" Margin="0" RenderTransformOrigin="0.833,0.743" Content="X" FontWeight="Bold" Width="70" HorizontalAlignment="Left"/>
+                        <Label x:Name="label_positionZ" Background="{x:Null}" Foreground="#FF0096FF" Margin="0" RenderTransformOrigin="0.833,0.743" Content="X" FontWeight="Bold" Width="80" HorizontalAlignment="Left"/>
+
+                    </StackPanel>
+                    <Grid x:Name="module_shower" Margin="0,60,0,10">
+                        <TabControl Margin="10,0,10,10" Foreground="{x:Null}" BorderBrush="{x:Null}" Background="{x:Null}">
+                            <TabControl.Resources>
+                                <Style TargetType="{x:Type TabItem}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type TabItem}">
+                                                <Grid x:Name="Panel">
+                                                    <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                                                </Grid>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsSelected" Value="True">
+                                                        <Setter TargetName="Panel" Property="Background" Value="#33FFFFFF" />
+                                                    </Trigger>
+                                                    <Trigger Property="IsSelected" Value="False">
+                                                        <Setter TargetName="Panel" Property="Background" Value="{x:Null}" />
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </TabControl.Resources>
+                            <TabItem Header="Move" Background="{x:Null}" Foreground="White">
+                                <Grid>
+                                    <StackPanel VerticalAlignment="Top" Margin="10,10,10,0">
+                                        <Grid x:Name="gbutton_module_airjump" Height="30" VerticalAlignment="Top" Margin="0" MouseUp="Gbutton_module_airjump_b_MouseUp">
+                                            <Border x:Name="gbutton_module_airjump_b" BorderBrush="Black" BorderThickness="1" Background="#339600FF" CornerRadius="10"/>
+                                            <TextBlock x:Name="gbutton_module_airjump_t" TextWrapping="Wrap" Text="AirJump" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
+                                        </Grid>
+                                        <Grid x:Name="qq_Speed" Margin="0,5,0,0">
+                                            <Border x:Name="gbutton_module_speed_b" BorderBrush="Black" BorderThickness="1" Background="#339600FF" CornerRadius="10"/>
+                                            <TextBlock x:Name="gbutton_module_Speed_t" TextWrapping="Wrap" Text="Speed" HorizontalAlignment="Center" Foreground="White" FontSize="18" Margin="0,0,0,42" VerticalAlignment="Center"/>
+                                            <Slider x:Name="slider_valueset_module_speed" Maximum="100" Background="{x:Null}" BorderBrush="White" Foreground="White" Margin="0,28,0,0" Height="30" SmallChange="5" LargeChange="10" TickFrequency="5" TickPlacement="BottomRight" IsSnapToTickEnabled="True" VerticalAlignment="Top" Value="20"/>
+                                            <Label x:Name="label_value_module_speed" Content="Speed" Foreground="White" Margin="0,50,0,0" VerticalAlignment="Top"/>
+                                            <Grid x:Name="gbutton_module_speed" Height="30" VerticalAlignment="Top" Margin="0" MouseUp="Gbutton_module_speed_b_MouseUp" Background="#00000000" />
+                                            <Label Content="Walk: 0.1  Run: 0.13" Foreground="White" Margin="0,50,0,0" HorizontalAlignment="Right"/>
+                                        </Grid>
+                                        <Grid x:Name="qq_Glide" Margin="0,5,0,0">
+                                            <Border x:Name="gbutton_module_glide_b" BorderBrush="Black" BorderThickness="1" Background="#339600FF" CornerRadius="10"/>
+                                            <TextBlock x:Name="gbutton_module_Speed_t1" TextWrapping="Wrap" Text="Glide" HorizontalAlignment="Center" Foreground="White" FontSize="18" Margin="0,0,0,42" VerticalAlignment="Center"/>
+                                            <Slider x:Name="slider_valueset_module_glide" Maximum="100" Background="{x:Null}" BorderBrush="White" Foreground="White" Margin="0,28,0,0" SmallChange="2" LargeChange="10" TickFrequency="2" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Minimum="-50" Value="2"/>
+                                            <Grid x:Name="gbutton_module_glide" Height="30" VerticalAlignment="Top" Margin="0" MouseUp="Gbutton_module_glide_b_MouseUp" Background="#00000000" />
+                                            <Label x:Name="label_value_module_glide" Content="Glide" Foreground="White" Margin="0,50,0,0"/>
+                                            <Label Content="OnGround: 0.08" Foreground="White" Margin="0,50,0,0" HorizontalAlignment="Right"/>
+                                        </Grid>
+                                    </StackPanel>
+                                    <Border BorderBrush="#7FFFFFFF" BorderThickness="2" CornerRadius="10"/>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="Combat" Background="{x:Null}" Foreground="White">
+                                <Grid>
+                                    <StackPanel VerticalAlignment="Top" Margin="10,10,10,0">
+                                        <Grid x:Name="gbutton_module_rapidhit" Height="30" VerticalAlignment="Top" Margin="0" MouseUp="Gbutton_module_rapidhit_b_MouseUp">
+                                            <Border x:Name="gbutton_module_rapidhit_b" BorderBrush="Black" BorderThickness="1" Background="#339600FF" CornerRadius="10"/>
+                                            <TextBlock x:Name="gbutton_module_rapidhit_t" TextWrapping="Wrap" Text="RapidHit" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
+                                        </Grid>
+                                    </StackPanel>
+                                    <Border BorderBrush="#7FFFFFFF" BorderThickness="2" CornerRadius="10"/>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="Player" Background="{x:Null}" Foreground="White">
+                                <Grid>
+                                    <StackPanel VerticalAlignment="Top" Margin="10,10,10,0">
+                                        <Grid x:Name="gbutton_module_nofall" Height="30" VerticalAlignment="Top" Margin="0" MouseUp="Gbutton_module_nofall_b_MouseUp">
+                                            <Border x:Name="gbutton_module_nofall_b" BorderBrush="Black" BorderThickness="1" Background="#339600FF" CornerRadius="10"/>
+                                            <TextBlock x:Name="gbutton_module_nofall_t" TextWrapping="Wrap" Text="Nofall (Nofalldamage)" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
+                                        </Grid>
+                                        <Grid x:Name="gbutton_trigger_module_fallfromheightplace" Height="30" MouseUp="Gbutton_module_fallfromhightplace_b_MouseUp" Margin="0,5,0,0">
+                                            <Border x:Name="gbutton_trigger_module_fallfromhightplace_b" BorderThickness="1" Height="30" CornerRadius="10" Background="#7F6400FF"/>
+                                            <Label x:Name="gbutton_trigger_module_fallfromheightplace_t" Content="Fall from hight place (Kill yourself)" VerticalAlignment="Top" Margin="0" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" Background="{x:Null}" Foreground="White" Height="30"/>
+                                        </Grid>
+                                    </StackPanel>
+                                    <Border BorderBrush="#7FFFFFFF" BorderThickness="2" CornerRadius="10"/>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="Game" Background="{x:Null}" Foreground="White">
+                                <Grid>
+                                    <StackPanel VerticalAlignment="Top" Margin="10,10,10,0">
+                                        <Grid x:Name="gbutton_module_showcoordinates" Height="30" VerticalAlignment="Top" Margin="0" MouseUp="Gbutton_module_showcoordinates_b_MouseUp">
+                                            <Border x:Name="gbutton_module_showcoordinates_b" BorderBrush="Black" BorderThickness="1" Background="#339600FF" CornerRadius="10"/>
+                                            <TextBlock x:Name="gbutton_module_showcoordinates_t" TextWrapping="Wrap" Text="Show Coordinates (Ingame)" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
+                                        </Grid>
+                                        <Grid x:Name="qq_fakegamemode" VerticalAlignment="Top" Height="60" Margin="0,5,0,0">
+                                            <Grid x:Name="gbutton_module_fakegamemode" Height="30" VerticalAlignment="Top" Margin="0" MouseUp="Gbutton_module_fakegamemode_b_MouseUp">
+                                                <Border x:Name="gbutton_module_fakegamemode_b" BorderThickness="0" Background="#339600FF" CornerRadius="10,10,0,0"/>
+                                                <TextBlock x:Name="gbutton_module_fakegamemode_t" TextWrapping="Wrap" Text="Fake Gamemode" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
+                                            </Grid>
+                                            <Grid x:Name="qq_SelectGM" Height="30" VerticalAlignment="Top" Margin="0,30,0,0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid x:Name="gbutton_module_fakecreative_radiobutton_0" Height="30" VerticalAlignment="Top" Margin="0" MouseUp="Gbutton_module_fakegamemode_0_b_MouseUp">
+                                                    <Border x:Name="gbutton_module_fakecreative_radiobutton_0_b" BorderThickness="0" Background="#7F646464" CornerRadius="0,0,0,10"/>
+                                                    <TextBlock x:Name="gbutton_module_fakecreative_radiobutton_0_t" TextWrapping="Wrap" Text="Survival" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
+                                                </Grid>
+                                                <Grid x:Name="gbutton_module_fakecreative_radiobutton_1" Height="30" VerticalAlignment="Top" Margin="0" MouseUp="Gbutton_module_fakegamemode_1_b_MouseUp" Grid.Column="1">
+                                                    <Border x:Name="gbutton_module_fakecreative_radiobutton_1_b" BorderThickness="0" Background="#7F9664FF"/>
+                                                    <TextBlock x:Name="gbutton_module_fakecreative_radiobutton_1_t" TextWrapping="Wrap" Text="Creative" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
+                                                </Grid>
+                                                <Grid x:Name="gbutton_module_fakecreative_radiobutton_2" Height="30" VerticalAlignment="Top" Margin="0" MouseUp="Gbutton_module_fakegamemode_2_b_MouseUp" Grid.Column="2">
+                                                    <Border x:Name="gbutton_module_fakecreative_radiobutton_2_b" BorderThickness="0" Background="#7F646464" CornerRadius="0,0,10,0"/>
+                                                    <TextBlock x:Name="gbutton_module_fakecreative_radiobutton_2_t" TextWrapping="Wrap" Text="Adventure" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+                                    </StackPanel>
+                                    <Border BorderBrush="#7FFFFFFF" BorderThickness="2" CornerRadius="10"/>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="TP" Background="{x:Null}" Foreground="White" Height="30">
+
+                                <Grid>
+                                    <StackPanel Margin="10,0">
+                                        <Label Content="X, Y, Z         use ~ to mark your relativ position" VerticalAlignment="Top" Margin="0,5,0,0" Height="30" Foreground="White" FontWeight="Bold" Background="{x:Null}" HorizontalAlignment="Center"/>
+                                        <StackPanel VerticalAlignment="Top" Margin="0">
+                                            <TextBox x:Name="textbox_module_teleport_x" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="#FF9600FF" Foreground="White" Margin="0" FontSize="20" CaretBrush="Red" UndoLimit="10" MaxLength="11"/>
+                                            <TextBox x:Name="textbox_module_teleport_y" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="#FF9600FF" Foreground="White" Margin="0,5,0,0" FontSize="20" CaretBrush="Red" UndoLimit="10" MaxLength="5"/>
+                                            <TextBox x:Name="textbox_module_teleport_z" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="#FF9600FF" Foreground="White" Margin="0,5,0,0" FontSize="20" CaretBrush="Red" UndoLimit="10" MaxLength="11"/>
+                                        </StackPanel>
+                                        <Grid x:Name="gbutton_trigger_module_tp" Height="30" MouseUp="Gbutton_module_tp_b_MouseUp" Margin="0,10,0,0">
+                                            <Border x:Name="gbutton_trigger_module_tp_b" BorderThickness="1" Height="30" CornerRadius="10" Background="#7F6400FF"/>
+                                            <Label x:Name="gbutton_trigger_module_tp_t" Content="Teleport" VerticalAlignment="Top" Margin="0" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" Background="{x:Null}" Foreground="White" Height="30"/>
+                                        </Grid>
+                                        <TextBlock x:Name="textblock_module_teleport_errorshower" TextWrapping="Wrap" Text="There was an error at reading the position" VerticalAlignment="Top" Margin="0,5,0,0" Foreground="Red"/>
+                                    </StackPanel>
+                                    <Border BorderBrush="#7FFFFFFF" BorderThickness="2" CornerRadius="10" Margin="0"/>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="More" Background="{x:Null}" Foreground="White">
+                                <Grid>
+                                    <StackPanel VerticalAlignment="Top" Margin="10,10,10,0">
+                                        <CheckBox x:Name="checkbox_trigger_clientsettings_enabledevsettings" Content="Enable Dev Settings (HotKeys)" VerticalAlignment="Top" Foreground="White" Background="White" BorderBrush="#FF9600FF" FontSize="20" Margin="0"/>
+                                    </StackPanel>
+                                    <Border BorderBrush="#7FFFFFFF" BorderThickness="2" CornerRadius="10"/>
+                                </Grid>
+                            </TabItem>
+                        </TabControl>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Border BorderThickness="2" BorderBrush="#7F9600FF" CornerRadius="20" />
+            <Border x:Name="template" BorderBrush="Black" BorderThickness="1" Margin="0" Width="0" Height="0" d:IsHidden="True">
+                <Grid x:Name="gbutton_default" Height="30" VerticalAlignment="Top" Margin="0,292,0,0" MouseUp="Gbutton_default_MouseUp">
+                    <Border x:Name="gbutton_default_b" BorderBrush="Black" BorderThickness="1" Background="#B26400FF" CornerRadius="10"/>
+                    <TextBlock x:Name="gbutton_default_t" TextWrapping="Wrap" Text="ButtonName" HorizontalAlignment="Center" Foreground="White" VerticalAlignment="Center" FontSize="18"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

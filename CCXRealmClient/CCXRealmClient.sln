@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CCXRealmClient", "CCXRealmClient.csproj", "{4AE1C56B-D6C6-420F-8FA1-3251B43F0069}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AE1C56B-D6C6-420F-8FA1-3251B43F0069}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AE1C56B-D6C6-420F-8FA1-3251B43F0069}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AE1C56B-D6C6-420F-8FA1-3251B43F0069}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AE1C56B-D6C6-420F-8FA1-3251B43F0069}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0420E34F-04BA-4007-8E8E-A9D803F72F8C}
+	EndGlobalSection
+EndGlobal
